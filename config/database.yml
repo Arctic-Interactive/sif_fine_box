@@ -22,9 +22,9 @@ default: &default
 
 development:
   <<: *default
-  username: <%= Rails.application.credentials.development.database.username || 'sif_fine_box_dev' %>
-  database: <%= Rails.application.credentials.development.database.dbname || 'sif_fine_box' %>
-  password: <%= Rails.application.credentials.development.database.password || 'justapassword' %>
+  username: <%= Rails.application.credentials.dig(:development, :database, :username) || 'default_username' %>
+  database: <%= Rails.application.credentials.dig(:development, :database, :dbname) || 'default_dbname' %>
+  password: <%= Rails.application.credentials.dig(:development, :database, :password) || 'default_password' %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
