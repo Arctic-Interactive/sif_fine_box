@@ -17,6 +17,7 @@ module SifFineBox
     config.autoload_lib(ignore: %w[assets tasks])
 
     config.middleware.use Rack::Deflater
+    config.i18n.default_locale = :da
 
     # Configuration for the application, engines, and railties goes here.
     #

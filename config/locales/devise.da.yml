@@ -1,0 +1,63 @@
+da:
+  devise:
+    confirmations:
+      confirmed: "Din e-mailadresse er blevet bekræftet."
+      send_instructions: "Du vil modtage en e-mail med instruktioner om, hvordan du bekræfter din e-mailadresse om få minutter."
+      send_paranoid_instructions: "Hvis din e-mailadresse findes i vores database, vil du modtage en e-mail med instruktioner om, hvordan du bekræfter din e-mailadresse om få minutter."
+    failure:
+      already_authenticated: "Du er allerede logget ind."
+      inactive: "Din konto er ikke aktiveret endnu."
+      invalid: "Ugyldigt %{authentication_keys} eller adgangskode."
+      locked: "Din konto er låst."
+      last_attempt: "Du har ét forsøg tilbage, før din konto bliver låst."
+      not_found_in_database: "Ugyldigt %{authentication_keys} eller adgangskode."
+      timeout: "Din session er udløbet. Log venligst ind igen for at fortsætte."
+      unauthenticated: "Du skal logge ind eller tilmelde dig, før du kan fortsætte."
+      unconfirmed: "Du skal bekræfte din e-mailadresse, før du kan fortsætte."
+    mailer:
+      confirmation_instructions:
+        subject: "Bekræftelsesinstruktioner"
+      reset_password_instructions:
+        subject: "Instruktioner til nulstilling af adgangskode"
+      unlock_instructions:
+        subject: "Instruktioner til at låse op"
+      email_changed:
+        subject: "E-mail ændret"
+      password_change:
+        subject: "Adgangskode ændret"
+    omniauth_callbacks:
+      failure: "Kunne ikke autentificere dig fra %{kind}, fordi \"%{reason}\"."
+      success: "Succesfuld autentificering fra %{kind} konto."
+    passwords:
+      no_token: "Du kan ikke tilgå denne side uden at komme fra en e-mail til nulstilling af adgangskode. Hvis du kommer fra en sådan e-mail, skal du sørge for at bruge den fulde URL, der er givet."
+      send_instructions: "Du vil modtage en e-mail med instruktioner om, hvordan du nulstiller din adgangskode om få minutter."
+      send_paranoid_instructions: "Hvis din e-mailadresse findes i vores database, vil du modtage et link til at gendanne din adgangskode på din e-mailadresse om få minutter."
+      updated: "Din adgangskode er blevet ændret med succes. Du er nu logget ind."
+      updated_not_active: "Din adgangskode er blevet ændret med succes."
+    registrations:
+      destroyed: "Farvel! Din konto er blevet annulleret med succes. Vi håber at se dig igen snart."
+      signed_up: "Velkommen! Du er blevet tilmeldt med succes."
+      signed_up_but_inactive: "Du er blevet tilmeldt med succes. Men vi kunne ikke logge dig ind, da din konto endnu ikke er aktiveret."
+      signed_up_but_locked: "Du er blevet tilmeldt med succes. Men vi kunne ikke logge dig ind, da din konto er låst."
+      signed_up_but_unconfirmed: "En besked med et bekræftelseslink er blevet sendt til din e-mailadresse. Følg venligst linket for at aktivere din konto."
+      update_needs_confirmation: "Du har opdateret din konto med succes, men vi skal bekræfte din nye e-mailadresse. Tjek venligst din e-mail og følg bekræftelseslinket for at bekræfte din nye e-mailadresse."
+      updated: "Din konto er blevet opdateret med succes."
+      updated_but_not_signed_in: "Din konto er blevet opdateret med succes, men da din adgangskode blev ændret, skal du logge ind igen."
+    sessions:
+      signed_in: "Du er logget ind med succes."
+      signed_out: "Du er logget ud med succes."
+      already_signed_out: "Du er allerede logget ud."
+    unlocks:
+      send_instructions: "Du vil modtage en e-mail med instruktioner om, hvordan du låser din konto op om få minutter."
+      send_paranoid_instructions: "Hvis din konto findes, vil du modtage en e-mail med instruktioner om, hvordan du låser den op om få minutter."
+      unlocked: "Din konto er blevet låst op med succes. Log venligst ind for at fortsætte."
+  errors:
+    messages:
+      already_confirmed: "blev allerede bekræftet, prøv venligst at logge ind"
+      confirmation_period_expired: "skal bekræftes indenfor %{period}, anmod venligst om en ny"
+      expired: "er udløbet, anmod venligst om en ny"
+      not_found: "ikke fundet"
+      not_locked: "var ikke låst"
+      not_saved:
+        one: "1 fejl forhindrede denne %{resource} i at blive gemt:"
+        other: "%{count} fejl forhindrede denne %{resource} i at blive gemt:"
