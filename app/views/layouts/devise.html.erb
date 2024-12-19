@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="da">
+<html>
   <head>
     <title><%= content_for(:title) || "SIF Holbæk Bødekasse" %></title>
-    <meta name="description" content="Dashboard for managing soccer club teams, fines, and related information.">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -31,26 +30,19 @@
     <%= vite_javascript_tag 'dashboard_charts' %>
   </head>
 
-<body
-    class="font-inter antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400"
-    :class="{ 'sidebar-expanded': sidebarExpanded }"
-    x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }"
-    x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))"
->
+  <body class="font-inter antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400">
     <script>
       if (localStorage.getItem('sidebar-expanded') == 'true') {
-        document.querySelector('body').classList.add('sidebar-expanded');
+          document.querySelector('body').classList.add('sidebar-expanded');
       } else {
-        document.querySelector('body').classList.remove('sidebar-expanded');
+            document.querySelector('body').classList.remove('sidebar-expanded');
       }
     </script>
     <!-- Page wrapper -->
     <div class="flex h-[100dvh] overflow-hidden">
       <%= render partial:'partials/alert', locals: { message: alert } if alert %>
       <%= render partial: 'partials/notice', locals: { message: notice } if notice %>
-      <%= render partial: 'partials/sidebar' %>
       <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-        <%= render partial: 'partials/header', locals: { user: current_user } %>
         <%= yield %>
       </div>
     </div>
