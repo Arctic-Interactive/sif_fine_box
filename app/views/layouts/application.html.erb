@@ -44,10 +44,9 @@
         document.querySelector('body').classList.remove('sidebar-expanded');
       }
     </script>
-    <!-- Page wrapper -->
-    <div class="flex h-[100dvh] overflow-hidden">
-      <%= render partial:'partials/alert', locals: { message: alert } if alert %>
+    <%= render partial:'partials/alert', locals: { message: alert } if alert %>
       <%= render partial: 'partials/notice', locals: { message: notice } if notice %>
+    <div class="flex h-[100dvh] overflow-hidden">
       <%= render partial: 'partials/sidebar' %>
       <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
         <%= render partial: 'partials/header', locals: { user: current_user } %>
