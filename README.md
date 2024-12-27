@@ -1,4 +1,6 @@
-# SIF Fine Box
+# SIF Fine Box ⚽💲
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/ee927b865c67531b86dc/maintainability)](https://codeclimate.com/github/Arctic-Interactive/sif_fine_box/maintainability)
 
 Welcome to the SIF Fine Box project! 🎉 This is a tool designed to bring transparency and fun to tracking fines and balances within your soccer club. With its user-friendly interface and insightful analytics, the SIF Fine Box makes it easier than ever to manage and visualize club finances.
 
