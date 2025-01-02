@@ -58,7 +58,7 @@ const dashboardCard01 = () => {
   const ctx = document.getElementById('dashboard-card-01');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const tooltipBodyColor = {
     light: '#6B7280',
@@ -198,7 +198,7 @@ const dashboardCard02 = () => {
   const ctx = document.getElementById('dashboard-card-02');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const tooltipBodyColor = {
     light: '#6B7280',
@@ -338,7 +338,7 @@ const dashboardCard03 = () => {
   const ctx = document.getElementById('dashboard-card-03');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const tooltipBodyColor = {
     light: '#6B7280',
@@ -478,7 +478,7 @@ const dashboardCard04 = () => {
   const ctx = document.getElementById('dashboard-card-04');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const textColor = {
     light: '#9CA3AF',
@@ -701,7 +701,7 @@ const dashboardCard05 = () => {
   const ctx = document.getElementById('dashboard-card-05');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const textColor = {
     light: '#9CA3AF',
@@ -924,7 +924,7 @@ const dashboardCard06 = () => {
   const ctx = document.getElementById('dashboard-card-06');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const tooltipTitleColor = {
     light: '#1F2937',
@@ -1070,7 +1070,7 @@ const dashboardCard08 = () => {
   const ctx = document.getElementById('dashboard-card-08');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const textColor = {
     light: '#9CA3AF',
@@ -1319,7 +1319,7 @@ const dashboardCard09 = () => {
   const ctx = document.getElementById('dashboard-card-09');
   if (!ctx) return;
 
-  const darkMode = localStorage.getItem('dark-mode') === 'true';
+  const darkMode = localStorage.getItem('darkMode') === 'true';
 
   const textColor = {
     light: '#9CA3AF',

@@ -3,3 +3,7 @@
 @import "./additional-styles/utility-patterns.css";
 @import "./additional-styles/flatpickr.css";
 @import "tailwindcss/utilities";
+
+[x-cloak] {
+  display: none !important;
+}

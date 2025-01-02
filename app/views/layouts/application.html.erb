@@ -12,7 +12,7 @@
     <%= yield :head %>
 
     <script>
-      if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+      if (localStorage.getItem('darkMode') === 'false' || !('darkMode' in localStorage)) {
         document.querySelector('html').classList.remove('dark');
         document.querySelector('html').style.colorScheme = 'light';
       } else {
