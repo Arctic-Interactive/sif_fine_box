@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_19_020217) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_02_012645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "practice_id", null: false
+    t.boolean "present", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["practice_id"], name: "index_attendances_on_practice_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
 
   create_table "fines", force: :cascade do |t|
     t.decimal "amount"
@@ -24,6 +34,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_020217) do
     t.index ["user_id"], name: "index_fines_on_user_id"
   end
 
+  create_table "practices", force: :cascade do |t|
+    t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -33,9 +49,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_020217) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "practices"
+  add_foreign_key "attendances", "users"
   add_foreign_key "fines", "users"
 end
