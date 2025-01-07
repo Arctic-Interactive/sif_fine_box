@@ -26,7 +26,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%= vite_client_tag %>
-    <%= vite_stylesheet_tag 'application', data: { "turbo-track": "reload" } %>
+    <%= vite_stylesheet_tag 'application', rel: 'stylesheet', data: { "turbo-track": "reload" } %>
     <%= vite_javascript_tag 'application' %>
     <%= vite_javascript_tag 'dashboard_charts' %>
   </head>
