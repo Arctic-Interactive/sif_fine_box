@@ -83,7 +83,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: sif_fine_box_production
+    database: sif_fine_box-db
     username: sif_fine_box
     password: <%= ENV["POSTGRES_PASSWORD"] %>
   # cache:
