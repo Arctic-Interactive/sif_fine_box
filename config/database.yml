@@ -83,18 +83,18 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: sif_prod
+    database: sif_fine_box_production
     username: sif_fine_box
     password: <%= ENV["POSTGRES_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: sif_fine_box_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: sif_fine_box_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: sif_fine_box_production_cable
-    migrations_paths: db/cable_migrate
+  # cache:
+  #   <<: *primary_production
+  #   database: sif_fine_box_production_cache
+  #   migrations_paths: db/cache_migrate
+  # queue:
+  #   <<: *primary_production
+  #   database: sif_fine_box_production_queue
+  #   migrations_paths: db/queue_migrate
+  # cable:
+  #   <<: *primary_production
+  #   database: sif_fine_box_production_cable
+  #   migrations_paths: db/cable_migrate

@@ -2,106 +2,65 @@
 service: sif_fine_box
 
 # Name of the container image.
-image: arctic-interactive/sif_fine_box
+image: sif_fine_box
 
-# Deploy to these servers.
+# The Dockerfile to use for building the image.
+builder:
+  arch: amd64
+
 servers:
   web:
-    - 138.68.73.196
+    hosts:
+      - 138.68.73.196
+
+  job:
+    hosts:
+      - 138.68.73.196
+    cmd: bundle exec sidekiq -q default
 
 proxy:
-  ssl: true
-  host: finebox.sif-holbaek.dk
-  app_port: 3000
-  healthcheck:
-    path: /up
-    interval: 7
-    timeout: 49
-
+    host: finebox.sif-holbaek.dk
+    ssl: true
+    healthcheck:
+      interval: 3
+      path: /up
+      timeout: 3
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
-  server: ghcr.io
-  username: arctic-interactive
-
-  # Always use an access token rather than real password when possible.
+  server: registry.digitalocean.com/easylife
+  username: 'nikodyring@gmail.com'
   password:
-    - KAMAL_REGISTRY_PASSWORD
-
-# Inject ENV variables into containers (secrets come from .kamal/secrets).
+    - KAMAL_REGISTRY_PASSWORD # Must be present in your `.env`.
 env:
+  clear:
+    RAILS_SERVE_STATIC_FILES: true
+    POSTGRES_USER: "sif_fine_box"
+    POSTGRES_DB: "sif_fine_box_production"
+    POSTGRES_HOST: "sif_fine_box-db" # With the pattern: <service_name>-<accessory_name>
+    REDIS_URL: "redis://sif_fine_box-redis:6379/0" # We need to override the REDIS_URL (used by Sidekiq and your cache_store), same pattern: <service_name>-<accessory_name>
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
-  clear:
-    # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
-    # When you start using multiple servers, you should split out job processing to a dedicated machine.
-    SOLID_QUEUE_IN_PUMA: true
+    - SECRET_KEY_BASE
 
-    # Set number of processes dedicated to Solid Queue (default: 1)
-    # JOB_CONCURRENCY: 3
-
-    # Set number of cores available to the application on each server (default: 1).
-    # WEB_CONCURRENCY: 2
-
-    # Match this to any external database server to configure Active Record correctly
-    # Use sif_fine_box-db for a db accessory server on same machine via local kamal docker network.
-    DB_HOST: sif_fine_box-db
-
-    # Log everything from Rails
-    RAILS_LOG_LEVEL: debug
-
-# Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
-# "bin/kamal logs -r job" will tail logs from the first server in the job section.
-aliases:
-  console: app exec --interactive --reuse "bin/rails console"
-  shell: app exec --interactive --reuse "bash"
-  logs: app logs -f
-  dbc: app exec --interactive --reuse "bin/rails dbconsole"
-
-
-# Use a persistent storage volume for sqlite database files and local Active Storage files.
-# Recommended to change this to a mounted volume path that is backed up off server.
-volumes:
-  - "sif_fine_box_storage:/rails/storage"
-
-
-# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
-# hitting 404 on in-flight requests. Combines all files from new and old
-# version inside the asset_path.
-asset_path: /rails/public/assets
-
-# Configure the image builder.
-builder:
-  arch: amd64
-
-  # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
-  # remote: ssh://docker@docker-builder-server
-  #
-  # # Pass arguments and secrets to the Docker build process
-  # args:
-  #   RUBY_VERSION: ruby-3.3.0
-  # secrets:
-  #   - GITHUB_TOKEN
-  #   - RAILS_MASTER_KEY
-
-# Use a different ssh user than root
-ssh:
-  user: deploy
-
-# Use accessory services (secrets come from .kamal/secrets).
 accessories:
   db:
-    image: postgres:17.3
+    image: postgres:16
     host: 138.68.73.196
-    port: "127.0.0.1:3306:3306"
+    port: 5432
     env:
       clear:
-        POSTGRES_USER: "sif_prod"
-        POSTGRES_DB: 'sif_fine_box'
+        POSTGRES_USER: "sif_fine_box"
+        POSTGRES_DB: "sif_fine_box_production" # The database will be created automatically on first boot.
       secret:
         - POSTGRES_PASSWORD
-        - POSTGRES_USER
     directories:
       - data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0
+    host: 138.68.73.196
+    directories:
+      - data:/data
