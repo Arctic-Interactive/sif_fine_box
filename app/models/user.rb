@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates_presence_of :email
   validates_presence_of :role
 
-  enum :role, { player: 0, coach: 1, administrator: 2 }
+  enum :role, { unregistered: 0, player: 1, coach: 2, administrator: 3 }
 
   has_many :fines, dependent: :destroy
   has_many :attendances
