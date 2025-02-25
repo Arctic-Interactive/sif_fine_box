@@ -326,7 +326,7 @@
           <button class="inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
             <% if current_user.avatar.attached? %>
-              <%= image_tag current_user.avatar, class: 'w-8 h-8 rounded-full flex-shrink-0', width: 32, height: 32, alt: 'User' %>
+              <%= image_tag current_user.avatar.variant(resize_to_fill: [150, 150]), class: 'w-8 h-8 rounded-full flex-shrink-0', width: 32, height: 32, alt: 'User' %>
             <% else %>
              <%= image_tag 'unknown-pic.png', class: 'w-8 h-8 rounded-full flex-shrink-0', width: 32, height: 32, alt: 'User' %>
             <% end %>

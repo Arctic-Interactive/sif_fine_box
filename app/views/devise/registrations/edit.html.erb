@@ -108,7 +108,7 @@
                 <div class="flex items-center">
                   <div class="mr-4">
                     <% if current_user.avatar.attached? %>
-                      <%= image_tag current_user.avatar, size: "150x150", class: 'rounded-full' %>
+                      <%= image_tag current_user.avatar.variant(resize_to_fill: [150, 150]), class: 'rounded-full' %>
                     <% else %>
                       <%= image_tag 'unknown-pic.png', class: 'w-20 h-20 rounded-full', width: 80, height: 80, alt: 'User uploaded avatar' %>
                     <% end %>
