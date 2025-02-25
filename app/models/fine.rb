@@ -1,6 +1,8 @@
 class Fine < ApplicationRecord
   belongs_to :user
 
+  validates :paid, inclusion: { in: [ true, false ] }
+
   enum :fine_type, {
     lost_game: 0,
     goal_conceded: 1,

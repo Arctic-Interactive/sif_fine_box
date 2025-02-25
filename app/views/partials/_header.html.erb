@@ -325,7 +325,7 @@
         <div class="relative inline-flex" x-data="{ open: false }">
           <button class="inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
-            <%= image_tag 'player-pic.png', class: 'w-8 h-8 rounded-full flex-shrink-0', width: 32, height: 32, alt: 'User' %>
+            <%= image_tag current_user.avatar, class: 'w-8 h-8 rounded-full flex-shrink-0', width: 32, height: 32, alt: 'User' %>
             <div class="flex items-center truncate">
               <span class="truncate ml-2 text-sm font-medium text-gray-600 dark:text-gray-100 group-hover:text-gray-800 dark:group-hover:text-white">
                 <%= user.name %>
@@ -344,8 +344,8 @@
             x-transition:leave-end="opacity-0" x-cloak>
             <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200 dark:border-gray-700/60">
               <div class="font-medium text-gray-800 dark:text-gray-100"><%= user.name %></div>
-              <div class="text-xs italic <%= user.balance >= 0 ? 'text-green-500' : 'text-red-500' %>">
-                Balance: <%= number_to_currency(user.balance, unit: "kr.", delimiter: ".", separator: ",", format: "%n %u") %>
+              <div class="text-xs italic <%= user.pending_balance >= 0 ? 'text-green-500' : 'text-red-500' %>">
+                Balance: <%= number_to_currency(user.pending_balance, unit: "kr.", delimiter: ".", separator: ",", format: "%n %u") %>
               </div>
               <div class="text-xs text-gray-500 dark:text-gray-400 italic"><%= user.role.capitalize %></div>
             </div>
