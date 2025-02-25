@@ -13,11 +13,6 @@ servers:
     hosts:
       - 138.68.73.196
 
-  job:
-    hosts:
-      - 138.68.73.196
-    cmd: bundle exec sidekiq -q default
-
 proxy:
     host: finebox.sif-holbaek.dk
     ssl: true
